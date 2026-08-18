@@ -35,6 +35,28 @@ Both failures look identical from the outside: the agent answers confidently and
 
 ---
 
+## What's in this repo
+
+**This is a design reference and a skill set, not a deployable solution.**
+
+| Included | Not included |
+|---|---|
+| Six skill packages (`SKILL.md` + zip), ready to upload | A packaged Power Platform solution |
+| Orchestrator and child agent instructions and routing descriptions | Deployed agents — you create these in Copilot Studio |
+| Dataverse schema documented as tables and columns | Table provisioning scripts |
+| Rebranding script (tested) | Seeded demo data |
+| Design rationale and setup guide | |
+
+The skills are real, complete and uploadable. Everything else is documentation you follow to build
+the agents yourself, following [docs/agent-setup.md](docs/agent-setup.md).
+
+**Not verified:** no agent in this configuration has been deployed and routing-tested end to end as
+part of this repo. The patterns come from a production multi-agent build; the specific skill set
+here has not been run against a live orchestrator. Treat the routing test table in the setup guide
+as the thing to run first, not as a result.
+
+---
+
 ## Architecture
 
 ```
