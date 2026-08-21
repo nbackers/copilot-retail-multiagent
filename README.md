@@ -1,10 +1,22 @@
+<div align="center">
+
 # Copilot Retail Multi-Agent
 
-A reference implementation for **multi-agent orchestration** in Copilot Studio: an orchestrator,
-four domain agents, and six deliberately cross-cutting skills, grounded in Dataverse through MCP.
+**A reference implementation for multi-agent orchestration in Copilot Studio**
 
-Built around a fictitious retailer, **Northwind Retail Group**. One script rebrands the whole set to
-your own schema.
+[![Agents](https://img.shields.io/badge/orchestrator_+_4_agents-0F6CBD?style=flat-square)](agents/)
+[![Skills](https://img.shields.io/badge/6_cross--cutting_skills-742774?style=flat-square)](skills/)
+[![Dataverse](https://img.shields.io/badge/Dataverse-11_tables-0078D4?style=flat-square)](dataverse/)
+[![MCP](https://img.shields.io/badge/grounding-Dataverse_MCP-000000?style=flat-square)](#)
+[![Licence](https://img.shields.io/badge/licence-MIT-blue?style=flat-square)](LICENSE)
+
+</div>
+
+An orchestrator, four domain agents, and six deliberately cross-cutting skills, grounded in
+Dataverse through MCP.
+
+Built around a fictitious retailer, **Northwind Retail Group**. One script rebrands the whole set
+to your own schema.
 
 ---
 
@@ -59,22 +71,45 @@ as the thing to run first, not as a result.
 
 ## Architecture
 
-```
-                   Northwind Store Operations
-                        (orchestrator)
-                              │
-        ┌──────────────┬──────┴───────┬──────────────┐
-        ▼              ▼              ▼              ▼
-   Inventory      Supplier      Employee        IT Support
-   and Stock     Management    Self-Service
-        │              │              │              │
-        └──────────────┴──────┬───────┴──────────────┘
-                              │
-                    Dataverse (MCP server)
-                       11 tables, nwr_
+```mermaid
+flowchart TD
+    O["<b>Northwind Store Operations</b><br/>orchestrator"]
+
+    O --> A["Inventory<br/>and Stock"]
+    O --> B["Supplier<br/>Management"]
+    O --> C["Employee<br/>Self-Service"]
+    O --> D["IT Support"]
+
+    A --> DV[("Dataverse via MCP<br/>11 tables, nwr_")]
+    B --> DV
+    C --> DV
+    D --> DV
+
+    style O fill:#0F6CBD,stroke:#0A4E8A,color:#fff
+    style A fill:#742774,stroke:#4A184A,color:#fff
+    style B fill:#742774,stroke:#4A184A,color:#fff
+    style C fill:#742774,stroke:#4A184A,color:#fff
+    style D fill:#742774,stroke:#4A184A,color:#fff
+    style DV fill:#0078D4,stroke:#005A9E,color:#fff
 ```
 
-Each child agent answers within one domain. The six skills sit **across** them:
+The six skills sit **across** the four agents, which is the part most designs miss:
+
+```mermaid
+flowchart LR
+    S1["store-morning-briefing"] --> I["Inventory"]
+    S1 --> SU["Supplier"]
+    S1 --> IT["IT"]
+    S1 --> P["People"]
+    S2["supplier-risk-review"] --> SU
+    S2 --> I
+    S3["new-starter-setup"] --> P
+    S3 --> IT
+
+    style S1 fill:#0F6CBD,stroke:#0A4E8A,color:#fff
+    style S2 fill:#0F6CBD,stroke:#0A4E8A,color:#fff
+    style S3 fill:#0F6CBD,stroke:#0A4E8A,color:#fff
+```
 
 | Skill | Domains it spans |
 |---|---|
