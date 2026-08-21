@@ -8,6 +8,7 @@
 [![Skills](https://img.shields.io/badge/6_cross--cutting_skills-742774?style=flat-square)](skills/)
 [![Dataverse](https://img.shields.io/badge/Dataverse-11_tables-0078D4?style=flat-square)](dataverse/)
 [![MCP](https://img.shields.io/badge/grounding-Dataverse_MCP-000000?style=flat-square)](#)
+[![Sample code](https://img.shields.io/badge/sample_code-not_production_ready-orange?style=flat-square)](#disclaimer)
 [![Licence](https://img.shields.io/badge/licence-MIT-blue?style=flat-square)](LICENSE)
 
 </div>
@@ -215,6 +216,25 @@ probably want one agent.
 - Skill `name` must be lowercase letters, numbers and hyphens, and must match the folder name.
 - `SKILL.md` must sit at the **root** of the zip, not inside a folder.
 - Written for the **new** Copilot Studio experience.
+
+---
+
+## Disclaimer
+
+This is **sample code**, published as a reusable reference pattern.
+
+- Provided **as is**, without warranty of any kind, express or implied. See [LICENSE](LICENSE).
+- **Not production ready.** Treat it as a starting point, not a finished solution. Review, test and
+  harden it against your own requirements before any real use.
+- **Not an official Microsoft product** and not affiliated with, endorsed by, or supported by
+  Microsoft. Product names are trademarks of their respective owners.
+- **No support commitment.** Issues and pull requests are welcome, but nothing here carries an SLA.
+- Some behaviours documented here rely on **undocumented or preview platform features** that can
+  change without notice. Verify against current documentation before depending on them.
+- You are responsible for security, privacy, licensing and regulatory compliance in your own
+  environment.
+
+---
 
 ## Licence
 
