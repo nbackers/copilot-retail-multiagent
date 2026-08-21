@@ -5,7 +5,7 @@ the agent's own instructions. **Tune descriptions first when routing misfires.**
 
 ---
 
-## Orchestrator — Northwind Store Operations
+## Orchestrator - Northwind Store Operations
 
 **Instructions**
 
@@ -152,12 +152,11 @@ You have read-only access. Never create, update or delete a record.
 
 What makes these work:
 
-1. **Concrete trigger phrases** — the actual words users type, not an abstract summary.
-2. **Explicit negative scope** — "Do not use for…" prevents overlap with a sibling.
-3. **Ambiguous cases named** — the "already owns one" case in Inventory would otherwise route to
+1. **Concrete trigger phrases** - the actual words users type, not an abstract summary.
+2. **Explicit negative scope** - "Do not use for…" prevents overlap with a sibling.
+3. **Ambiguous cases named** - the "already owns one" case in Inventory would otherwise route to
    warranty or delivery.
-4. **No overlap on the same noun** — only one agent claims "stock levels"; Supplier claims
+4. **No overlap on the same noun** - only one agent claims "stock levels"; Supplier claims
    "inbound", which is different.
 
-If two descriptions could both plausibly answer a question, the orchestrator picks arbitrarily —
-and it will look like a model quality problem when it is a specification problem.
+If two descriptions could both plausibly answer a question, the orchestrator picks arbitrarily - and it will look like a model quality problem when it is a specification problem.

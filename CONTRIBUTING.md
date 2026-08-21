@@ -1,10 +1,9 @@
 # Contributing
 
-Contributions welcome, particularly around **routing accuracy** — the hardest part of a multi-agent
+Contributions welcome, particularly around **routing accuracy** - the hardest part of a multi-agent
 build and the least documented.
 
 ## Useful contributions
-
 - **Routing results.** If a question consistently reaches the wrong agent, that's a description
   problem worth documenting. Include the question, where it went, and where it should have gone.
 - **Additional cross-cutting skills.** The bar is that it must genuinely span two or more domains.
@@ -17,7 +16,7 @@ build and the least documented.
 1. One concern per PR.
 2. Skills must keep `SKILL.md` at the folder root, with `name` matching the folder name in
    lowercase kebab case.
-3. Write files as **UTF-8 without BOM** — a BOM breaks front matter parsing on upload.
+3. Write files as **UTF-8 without BOM** - a BOM breaks front matter parsing on upload.
 4. Keep the fictitious identity (`Northwind Retail Group`, prefix `nwr_`). Never introduce a real
    retailer, product, supplier or store name.
 5. If you add a skill, add its demo hook and say which domains it spans.

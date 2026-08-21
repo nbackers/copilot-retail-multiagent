@@ -28,7 +28,7 @@ available to sell = nwr_quantityonhand − nwr_quantityreserved
 ```
 
 There is deliberately **no stored `available` column**. Storing it would let it drift from the two
-values it derives from, and a stale availability figure is worse than no figure — it produces
+values it derives from, and a stale availability figure is worse than no figure - it produces
 confident promises that can't be met.
 
 Every skill does the subtraction explicitly.
@@ -60,21 +60,19 @@ whether inbound stock offsets a reorder.
 
 To exercise the skills properly, seed data that produces a real decision rather than a healthy
 board:
-
-- A store with **zero** stock of a product another store holds — drives `stock-transfer-request`
-- A product where on hand is at or below reorder level, with a **delayed** PO inbound — drives
+- A store with **zero** stock of a product another store holds - drives `stock-transfer-request`
+- A product where on hand is at or below reorder level, with a **delayed** PO inbound - drives
   `weekly-replenishment-plan`
-- An **unassigned P1** ticket with an SLA due today — drives `major-incident-response`
-- A supplier with a poor rating, `Suspended` status and a contract expiring soon — drives
+- An **unassigned P1** ticket with an SLA due today - drives `major-incident-response`
+- A supplier with a poor rating, `Suspended` status and a contract expiring soon - drives
   `supplier-risk-review`
-- Approved leave covering today — makes the briefing's roster section meaningful
-- One row where on hand < reserved — proves the data-error path
+- Approved leave covering today - makes the briefing's roster section meaningful
+- One row where on hand < reserved - proves the data-error path
 
 Exception-only reporting means a fully healthy dataset makes every skill correctly return "nothing
 urgent", which demonstrates nothing.
 
 ## Alternate keys
 
-If you look records up by a natural identifier — employee email, ticket number, order number —
-add an **alternate key** on that column. It keeps queries delegable at scale and avoids passing
+If you look records up by a natural identifier - employee email, ticket number, order number - add an **alternate key** on that column. It keeps queries delegable at scale and avoids passing
 GUIDs around in conversation.

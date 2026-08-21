@@ -6,12 +6,12 @@ Build order for the orchestrator and four child agents in the **new** Copilot St
 
 ## 1. Dataverse first
 
-Create the tables before the agents — the MCP tool needs something to ground against.
+Create the tables before the agents - the MCP tool needs something to ground against.
 See [../dataverse/README.md](../dataverse/README.md).
 
 ## 2. Create the child agents
 
-Create four agents. These are **purely generative** — they hold instructions and grounding, no
+Create four agents. These are **purely generative** - they hold instructions and grounding, no
 actions.
 
 | Agent | Owns |
@@ -21,7 +21,7 @@ actions.
 | Employee Self-Service | Leave, roster, onboarding, employee records |
 | IT Support | Tickets, incidents, priorities, SLAs |
 
-For each, set the `description` carefully — see [design-rationale.md](design-rationale.md#routing-concretely).
+For each, set the `description` carefully - see [design-rationale.md](design-rationale.md#routing-concretely).
 This is what the orchestrator routes on.
 
 Descriptions are in [../agents/](../agents/).
@@ -38,7 +38,7 @@ connectorId: /providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps
 operationId: InvokeMCP
 ```
 
-> **Read-only is enforced by instruction, not by the tool.** The MCP tool is neutral — it will
+> **Read-only is enforced by instruction, not by the tool.** The MCP tool is neutral - it will
 > create and update if asked. If the agent must not write, say so explicitly in its instructions
 > *and* scope the tables it can reach. Do not assume the tool restricts it for you.
 
@@ -48,7 +48,7 @@ and enforces the domain boundary.
 ## 4. Create the orchestrator
 
 Create the parent agent and connect the four children. The orchestrator's job is routing and
-summary — keep its own grounding minimal.
+summary - keep its own grounding minimal.
 
 ## 5. Upload the skills
 
@@ -61,11 +61,10 @@ Rebrand first if you're using your own prefix:
 ```
 
 Requirements:
-
 - `SKILL.md` at the **root** of the zip, not inside a folder
 - `name` in the front matter: lowercase letters, numbers and hyphens only
 - `name` must match the folder name
-- UTF-8 **without BOM** — a BOM breaks front matter parsing
+- UTF-8 **without BOM** - a BOM breaks front matter parsing
 
 ## 6. Test routing before testing answers
 
@@ -81,17 +80,16 @@ Routing failures look like bad answers, so separate the two. For each question b
 | "New sales consultant starting Monday" | `new-starter-setup` skill |
 | "When is my leave approved?" | Employee Self-Service child agent |
 
-If a question reaches the wrong place, fix the **description** — not the instructions.
+If a question reaches the wrong place, fix the **description** - not the instructions.
 
 ---
 
 ## Manual steps with no headless equivalent
 
 Worth knowing before planning automation:
-
-- **Connection binding** — OAuth consent, once per environment, in the portal.
-- **Skill upload** — portal only, one zip at a time.
-- **Flow creation** — no `pac flow create`; portal or MCP tooling.
+- **Connection binding** - OAuth consent, once per environment, in the portal.
+- **Skill upload** - portal only, one zip at a time.
+- **Flow creation** - no `pac flow create`; portal or MCP tooling.
 
 `pac copilot create / clone / push / publish` covers agent provisioning from source, but cannot bind
 connections.
@@ -99,7 +97,6 @@ connections.
 ---
 
 ## Verification checklist
-
 - [ ] All 11 tables exist and contain data
 - [ ] Each child agent reaches only its own tables
 - [ ] Read-only instruction present where required
